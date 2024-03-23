@@ -6,7 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 public class PracticeTest extends BaseTest {
     String productName = "ZARA COAT 3";
@@ -43,17 +45,9 @@ public class PracticeTest extends BaseTest {
     }
 
     @DataProvider
-    public Object[][] getData() {
-        HashMap<String, String> map1 = new HashMap<>();
-        map1.put("email", "abcxyz@dummy.com");
-        map1.put("password", "Abc@1234");
-        map1.put("product", "ZARA COAT 3");
+    public Object[][] getData() throws IOException {
+        List<HashMap<String,String>> data = getJSONDataToMap("//src/test/java/com/selenium/practice/tests/data/PurchaseOrder.json");
 
-        HashMap<String, String> map2 = new HashMap<>();
-        map2.put("email", "abcdxyz@dummy.com");
-        map2.put("password", "Abc@1234");
-        map2.put("product", "ADIDAS ORIGINAL");
-
-        return new Object[][] {{map1}, {map2}};
+        return new Object[][] {{data.get(0)}, {data.get(1)}};
     }
 }
