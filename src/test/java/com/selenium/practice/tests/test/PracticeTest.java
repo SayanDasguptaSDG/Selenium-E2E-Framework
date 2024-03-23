@@ -16,7 +16,6 @@ public class PracticeTest extends BaseTest {
     public void submitOrder() {
         ProductCatalog productCatalog = landingPage.loginApplication(email, password);
 
-        List<WebElement> products = productCatalog.getProductList();
         productCatalog.addToCart(productName);
 
         CartPage cartPage = productCatalog.goToCartPage();
