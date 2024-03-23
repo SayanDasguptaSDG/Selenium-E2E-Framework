@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -63,11 +64,14 @@ public class BaseTest {
     }
 
     public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+        String screenshotPath;
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
         File file = new File(System.getProperty("user.dir") +  File.separator + "reports" +  File.separator + testCaseName + ".png");
-        FileUtils.copyFile(source, file);
-        return System.getProperty("user.dir") +  File.separator + "reports" +  File.separator + testCaseName + ".png";
+        FileHandler.copy(source, file);
+        String[] relativePath = file.toString().split("reports");
+        screenshotPath = ".\\" + relativePath[1];
+        return screenshotPath;
     }
 
     @BeforeMethod(alwaysRun = true)
