@@ -22,7 +22,7 @@ public class PracticeTest extends BaseTest {
 
         CartPage cartPage = productCatalog.goToCartPage();
 
-        Boolean match = cartPage.verifyProductDisplay(productName);
+        Boolean match = cartPage.verifyProductDisplay(input.get("product"));
         Assert.assertTrue(match);
 
         CheckoutPage checkoutPage = cartPage.goToCheckout();
