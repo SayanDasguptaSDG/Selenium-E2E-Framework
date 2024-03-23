@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ErrorValidationTest extends BaseTest {
-    @Test
+    @Test(groups= {"ErrorHandling"})
     public void loginErrorValidation() {
         String email = "abcdxyz@dummy.com";
         String password = "Abc@1234";

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Suite">
+    <groups>
+        <run>
+            <include name="ErrorHandling" />
+        </run>
+    </groups>
+    <test thread-count="5" name="E2E Tests">
+        <classes>
+            <class name="com.selenium.practice.tests.test.PracticeTest" />
+        </classes>
+    </test>
+    <test thread-count="5" name="Error Validation Tests">
+        <classes>
+            <class name="com.selenium.practice.tests.test.ErrorValidationTest" />
+        </classes>
+    </test>
+</suite>
