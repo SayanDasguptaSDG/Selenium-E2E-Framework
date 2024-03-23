@@ -6,15 +6,17 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+
 public class PracticeTest extends BaseTest {
     String productName = "ZARA COAT 3";
     String email = "abcxyz@dummy.com";
     String password = "Abc@1234";
     @Test(dataProvider = "getData", groups = {"Purchase"})
-    public void submitOrder(String email, String password, String productName) {
-        ProductCatalog productCatalog = landingPage.loginApplication(email, password);
+    public void submitOrder(HashMap<String,String> input) {
+        ProductCatalog productCatalog = landingPage.loginApplication(input.get("email"), input.get("password"));
 
-        productCatalog.addToCart(productName);
+        productCatalog.addToCart(input.get("product"));
 
         CartPage cartPage = productCatalog.goToCartPage();
 
@@ -42,6 +44,16 @@ public class PracticeTest extends BaseTest {
 
     @DataProvider
     public Object[][] getData() {
-        return new Object[][] {{"abcxyz@dummy.com", "Abc@1234", "ZARA COAT 3"}, {"abcdxyz@dummy.com", "Abc@1234", "ADIDAS ORIGINAL"}};
+        HashMap<String, String> map1 = new HashMap<>();
+        map1.put("email", "abcxyz@dummy.com");
+        map1.put("password", "Abc@1234");
+        map1.put("product", "ZARA COAT 3");
+
+        HashMap<String, String> map2 = new HashMap<>();
+        map2.put("email", "abcdxyz@dummy.com");
+        map2.put("password", "Abc@1234");
+        map2.put("product", "ADIDAS ORIGINAL");
+
+        return new Object[][] {{map1}, {map2}};
     }
 }
