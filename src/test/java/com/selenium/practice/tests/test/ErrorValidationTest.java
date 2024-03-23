@@ -3,11 +3,12 @@ package com.selenium.practice.tests.test;
 import com.selenium.practice.pageobjects.CartPage;
 import com.selenium.practice.pageobjects.ProductCatalog;
 import com.selenium.practice.tests.testComponents.BaseTest;
+import com.selenium.practice.tests.testComponents.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ErrorValidationTest extends BaseTest {
-    @Test(groups= {"ErrorHandling"})
+    @Test(groups= {"ErrorHandling"}, retryAnalyzer = Retry.class)
     public void loginErrorValidation() {
         String email = "abcdxyz@dummy.com";
         String password = "Abc@1234";
