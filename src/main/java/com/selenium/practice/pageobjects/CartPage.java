@@ -17,7 +17,7 @@ public class CartPage extends ReusableComponents {
     }
 
     @FindBy(css=".totalRow button")
-    WebElement checkoutElement;
+    private WebElement checkoutElement;
 
     @FindBy(css=".cartSection h3")
     private List<WebElement> productTitles;

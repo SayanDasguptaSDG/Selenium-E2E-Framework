@@ -16,16 +16,16 @@ public class LandingPage extends ReusableComponents {
     }
 
     @FindBy(id="userEmail")
-    WebElement userEmail;
+    private WebElement userEmail;
 
     @FindBy(id="userPassword")
-    WebElement userPassword;
+    private WebElement userPassword;
 
     @FindBy(id="login")
-    WebElement loginButton;
+    private WebElement loginButton;
 
     @FindBy(css="[class*='flyInOut']")
-    WebElement errorMessage;
+    private WebElement errorMessage;
 
     public ProductCatalog loginApplication(String email, String password) {
         userEmail.sendKeys(email);

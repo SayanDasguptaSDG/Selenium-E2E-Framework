@@ -18,15 +18,15 @@ public class CheckoutPage extends ReusableComponents {
     }
 
     @FindBy(css="[placeholder='Select Country']")
-    WebElement country;
+    private WebElement country;
 
     @FindBy(css=".action__submit")
-    WebElement submit;
+    private WebElement submit;
 
     @FindBy(xpath="//button[contains(@class, 'ta-item')][2]")
-    WebElement selectCountry;
+    private WebElement selectCountry;
 
-    By results = By.cssSelector(".ta-results");
+    private final By results = By.cssSelector(".ta-results");
 
     public void selectCountry(String countryName) {
         Actions a = new Actions(driver);

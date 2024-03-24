@@ -66,10 +66,9 @@ public class BaseTest {
                 new File(System.getProperty("user.dir") +
                         filepath), StandardCharsets.UTF_8);
         ObjectMapper mapper = new ObjectMapper();
-        List<HashMap<String,String>> data = mapper.readValue(jsonContent,
+        return mapper.readValue(jsonContent,
                 new TypeReference<>() {
                 });
-        return data;
     }
 
     public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {

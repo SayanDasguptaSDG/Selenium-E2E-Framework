@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Listeners extends BaseTest implements ITestListener {
     ExtentReports extent = ExtentReporterNG.getReportObject();
     ExtentTest test;
-    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -30,6 +30,7 @@ public class Listeners extends BaseTest implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         String filepath;
+        extentTest.get().log(Status.PASS, "Test Failed");
         extentTest.get().fail(result.getThrowable());
         try {
             driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());

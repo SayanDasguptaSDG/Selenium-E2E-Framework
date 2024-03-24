@@ -11,9 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PracticeTest extends BaseTest {
-    String productName = "ZARA COAT 3";
-    String email = "abcxyz@dummy.com";
-    String password = "Abc@1234";
+
     @Test(dataProvider = "getData", groups = {"Purchase"})
     public void submitOrder(HashMap<String,String> input) {
         ProductCatalog productCatalog = landingPage.loginApplication(input.get("email"), input.get("password"));
@@ -34,13 +32,14 @@ public class PracticeTest extends BaseTest {
                 "THANKYOU FOR THE ORDER."));
     }
 
-    @Test(dependsOnMethods = { "submitOrder" })
-    public void orderHistory() {
+    @Test(dataProvider = "getData", groups = {"Purchase"},
+            dependsOnMethods = { "submitOrder" })
+    public void orderHistory(HashMap<String,String> input) {
 
-        ProductCatalog productCatalog = landingPage.loginApplication(email, password);
+        ProductCatalog productCatalog = landingPage.loginApplication(input.get("email"), input.get("password"));
 
         OrdersPage ordersPage = productCatalog.goToOrdersPage();
-        Boolean match = ordersPage.verifyOrderDisplay(productName);
+        Boolean match = ordersPage.verifyOrderDisplay(input.get("product"));
         Assert.assertTrue(match);
     }
 

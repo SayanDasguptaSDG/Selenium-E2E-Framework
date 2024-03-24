@@ -19,14 +19,14 @@ public class ProductCatalog extends ReusableComponents {
     }
 
     @FindBy(css=".mb-3")
-    List<WebElement> products;
+    private List<WebElement> products;
 
     @FindBy(css=".ng-animating")
-    WebElement spinner;
+    private WebElement spinner;
 
-    By productsBy = By.cssSelector(".mb-3");
-    By addToCart = By.cssSelector(".card-body button:last-of-type");
-    By toastMessage = By.cssSelector("#toast-container");
+    private final By productsBy = By.cssSelector(".mb-3");
+    private final By addToCart = By.cssSelector(".card-body button:last-of-type");
+    private final By toastMessage = By.cssSelector("#toast-container");
 
     public List<WebElement> getProductList() {
         waitForElementToAppear(productsBy);

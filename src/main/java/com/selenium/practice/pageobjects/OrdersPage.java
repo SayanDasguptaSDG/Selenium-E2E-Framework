@@ -14,7 +14,7 @@ public class OrdersPage {
     }
 
     @FindBy(xpath="//tbody/tr/td[2]")
-    List<WebElement> orderTitles;
+    private List<WebElement> orderTitles;
 
     public Boolean verifyOrderDisplay(String productName) {
         return orderTitles.stream().anyMatch(product->

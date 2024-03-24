@@ -34,10 +34,10 @@ public class ReusableComponents {
     }
 
     @FindBy(css="[routerlink*='cart']")
-    WebElement cartHeader;
+    private WebElement cartHeader;
 
     @FindBy(css="[routerlink*='myorders']")
-    WebElement ordersHeader;
+    private WebElement ordersHeader;
 
     public CartPage goToCartPage() {
         cartHeader.click();

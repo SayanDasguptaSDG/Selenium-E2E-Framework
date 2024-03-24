@@ -17,9 +17,8 @@ public class DataReader {
                         "//src//test//java//com//selenium//practice//" +
                         "tests//data//PurchaseOrder.json"), StandardCharsets.UTF_8);
         ObjectMapper mapper = new ObjectMapper();
-        List<HashMap<String,String>> data = mapper.readValue(jsonContent,
+        return mapper.readValue(jsonContent,
                 new TypeReference<>() {
                 });
-        return data;
     }
 }

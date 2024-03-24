@@ -16,7 +16,7 @@ public class ConfirmationPage extends ReusableComponents {
     }
 
     @FindBy(css=".hero-primary")
-    WebElement confirmationMessage;
+   private WebElement confirmationMessage;
 
     public String getConfirmationMessage() {
         return confirmationMessage.getText();
