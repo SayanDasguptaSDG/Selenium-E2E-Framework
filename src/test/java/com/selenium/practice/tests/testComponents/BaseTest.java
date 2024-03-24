@@ -3,7 +3,9 @@ package com.selenium.practice.tests.testComponents;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.selenium.practice.pageobjects.LandingPage;
+import com.selenium.practice.tests.utilities.LogUtility;
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
@@ -11,6 +13,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.v118.runtime.model.StackTrace;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
@@ -29,6 +32,7 @@ import java.util.Properties;
 public class BaseTest {
     public WebDriver driver;
     public LandingPage landingPage;
+
     public WebDriver initializeDriver() throws IOException {
 
         Properties prop = new Properties();
@@ -85,6 +89,7 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public LandingPage launchApplication() throws IOException {
         driver = initializeDriver();
+        LogUtility.info("************* Starting test execution *************");
         landingPage = new LandingPage(driver);
         landingPage.goTo();
         return landingPage;
@@ -97,5 +102,6 @@ public class BaseTest {
         } catch(Exception e) {
             e.printStackTrace();
         }
+        LogUtility.info("************* Finishing test execution *************");
     }
 }
